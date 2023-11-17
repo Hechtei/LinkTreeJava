@@ -1,34 +1,60 @@
 <!DOCTYPE html>
 <html lang="de" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>Linktree</title>
+
+  <title>Rentschler Biopharma</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" /></head>
-<body>
+  <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+  <link rel="icon" href="../static/pics/img.png" type="image/x-icon">
 
+</head>
+<body>
 <div class="logo">
-  <img src="src/img.png" height="322" width="322" alt="kek"/>
+  <img src="../static/pics/img.png" height="322" width="322" alt="kek"/>
 </div>
+
+<table>
+  <tr>
+      <td><img src="../static/pics/InstragramIcon.png" alt="Our Instagram Profile"></td>
+      <td><img src="../static/pics/LinkedInIcon.png" alt="Our Instagram Profile"></td>
+      <td><img src="../static/pics/FacebookIcon.png" alt="Our Instagram Profile"></td>
+      <td><img src="../static/pics/YoutubeIcon.png " alt="Our Instagram Profile"></td>
+  </tr>
+</table>
+
+
 
 <div class="titel">
   <h1>Rentschler Biopharma</h1>
   <h3>Klick dich durch unseren Feed!</h3>
 </div>
 
-<div class ="center1">
-  <button class="button" onclick="changeColor(this)">Unsere Karriereseite</button>
 
-</div>
-<div class ="center1">
-  <button class ="button" onclick="function2()">Homepage</button>
-</div>
-<div class ="center1">
-  <button class ="button" onclick="function2()">Impressum</button>
-</div>
-<div class ="center1">
-  <button class ="button" onclick="function2()">Datenschutz</button>
-</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <div class="table">
   <table id>
@@ -38,11 +64,5 @@
 </div>
 
 <div class="image_container"></div>
-
-<script>
-  function changeColor(element){
-    window.location.href ="https://rentschler.wd3.myworkdayjobs.com/de-DE/Rentschler_Career";
-  }
-</script>
 </body>
 </html>
