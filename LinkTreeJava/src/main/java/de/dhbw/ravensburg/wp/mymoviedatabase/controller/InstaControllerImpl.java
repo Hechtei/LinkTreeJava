@@ -7,12 +7,13 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/pics")
+@RequestMapping()
 public class InstaControllerImpl implements InstaController {
 
 
@@ -25,7 +26,7 @@ public class InstaControllerImpl implements InstaController {
 
 
     @Override
-    @GetMapping("/")
+
     public List<InstaDTO> getAllPictures() {
         return linkTreeService.getAllPic();
     }
@@ -36,20 +37,14 @@ public class InstaControllerImpl implements InstaController {
     }
 
 
-    @GetMapping(value = "/{id}")
-   public ResponseEntity<byte[]> getProduktBild(@PathVariable Long id){
-
-        byte[] bild = linkTreeService.getPicById(id).getPic();
-
-       HttpHeaders headers = new HttpHeaders();
-       headers.setContentType(MediaType.IMAGE_PNG);
-
-       return new ResponseEntity<>(bild, headers, HttpStatus.OK);
+    @GetMapping(value = "/pics")
+   public String  getProduktBild(Model model){
+        byte[] bild = linkTreeService.getPicById(1L).getPic();
+        model.addAttribute("bild",bild);
+        return "dashboard";
    }
 
-    public byte[] showPictureById(@PathVariable("id")Long id ){
-        return linkTreeService.getPicById(id).getPic();
-    }
+
 
 
 
