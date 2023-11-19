@@ -4,8 +4,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.validation.constraints.NotNull;
 
@@ -22,4 +20,12 @@ public class InstaDTO {
     @Lob
     private byte[] pic;
 
+
+    public void setPic(byte[] pic) {
+        this.pic = pic;
+    }
+
+    public byte[] getPic() {
+        return pic;
+    }
 }

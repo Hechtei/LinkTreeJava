@@ -37,7 +37,9 @@ public class LinkTreeServiceImpl implements LinkTreeService{
 
     @Override
     public void removePic(Long id) {
+
         instaRepo.delete(instaRepo.getById(id));
+
     }
 
     @Override

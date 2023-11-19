@@ -3,6 +3,10 @@ package de.dhbw.ravensburg.wp.mymoviedatabase.controller;
 
 import de.dhbw.ravensburg.wp.mymoviedatabase.DTOs.InstaDTO;
 import de.dhbw.ravensburg.wp.mymoviedatabase.service.LinkTreeService;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,10 +31,29 @@ public class InstaControllerImpl implements InstaController {
     }
 
     @Override
-    @GetMapping(value = "/{id]")
-    public InstaDTO getPictureById(@PathVariable("id") Long id) {
-        return linkTreeService.getPicById(id);
+    public InstaDTO getPictureById(Long id) {
+        return null;
     }
+
+
+    @GetMapping(value = "/{id}")
+   public ResponseEntity<byte[]> getProduktBild(@PathVariable Long id){
+
+        byte[] bild = linkTreeService.getPicById(id).getPic();
+
+       HttpHeaders headers = new HttpHeaders();
+       headers.setContentType(MediaType.IMAGE_PNG);
+
+       return new ResponseEntity<>(bild, headers, HttpStatus.OK);
+   }
+
+    public byte[] showPictureById(@PathVariable("id")Long id ){
+        return linkTreeService.getPicById(id).getPic();
+    }
+
+
+
+
 
     @Override
     @PutMapping(value = "{/id}")

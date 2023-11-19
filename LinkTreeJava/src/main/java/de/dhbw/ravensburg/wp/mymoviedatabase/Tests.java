@@ -1,85 +1,58 @@
 package de.dhbw.ravensburg.wp.mymoviedatabase;
 
+
+
+
+import de.dhbw.ravensburg.wp.mymoviedatabase.model.InstaPic;
+
+
+import de.dhbw.ravensburg.wp.mymoviedatabase.repository.InstaRepo;
+
+import de.dhbw.ravensburg.wp.mymoviedatabase.service.LinkTreeService;
+
+import de.dhbw.ravensburg.wp.mymoviedatabase.util.ImageUtil;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.tomcat.util.http.fileupload.ByteArrayOutputStream;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.annotation.Profile;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
-import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.io.IOException;
 import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.time.LocalDate;
+import java.util.List;
 
 @Component
 @Slf4j
+
 public class Tests {
+
+    LinkTreeService linkTreeService;
+
+    InstaRepo instaRepo;
+
+    public Tests(LinkTreeService linkTreeService, InstaRepo instaRepo) {
+        this.linkTreeService = linkTreeService;
+        this.instaRepo = instaRepo;
+    }
+
     @EventListener(ApplicationReadyEvent.class)
-    public void callController() {
+    public void callController(){
 
-        log.info("kekW");
+        InstaPic instaPic1 = new InstaPic("link");
 
-        String relativePathString = "LinkTreeJava/src/main/resources/static/pics/FacebookIcon.png";
+        String absoultePath = "C:\\Users\\Hechtei\\IdeaProjects\\LinkTreeJava\\LinkTreeJava\\src\\main\\resources\\static\\instapics\\Dog.png";
 
-        Path relativePath = Paths.get(relativePathString);
+        BufferedImage image = ImageUtil.loadImage(Path.of(absoultePath));
 
-        Path absolutePath = relativePath.toAbsolutePath();
+        instaPic1.setPic(ImageUtil.imageToByteArray(image));
 
-        log.info(absolutePath.toString());
+        instaRepo.save(instaPic1);
 
-        BufferedImage image = loadImage(absolutePath);
 
-        byte[] imageBytes = imageToByteArray(image);
 
-        BufferedImage restoredImage = byteArrayToImage(imageBytes);
 
-        saveImage(restoredImage, "C:\\Users\\hecht\\OneDrive\\Desktop\\LinkTreeJava\\LinkTreeJava\\src\\main\\resources\\static\\pics\\TestPic.jpg");
-    }
 
-    private static BufferedImage loadImage(Path filePath) {
-        try {
-            log.info("Versuche, Bild zu laden: {}", filePath);
-            File file = new File(filePath.toString());
-            if (!file.exists()) {
-                log.error("Die Datei existiert nicht: {}", filePath);
-                return null;
-            }
-            return ImageIO.read(file);
-        } catch (IOException e) {
-            log.error("Fehler beim Lesen der Bilddatei: {}", e.getMessage());
-            e.printStackTrace();
-            return null;
-        }
-    }
-
-    private static byte[] imageToByteArray(BufferedImage image) {
-        try {
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            ImageIO.write(image, "png", baos);
-            return baos.toByteArray();
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-
-    private static BufferedImage byteArrayToImage(byte[] bytes) {
-        try {
-            return ImageIO.read(new ByteArrayInputStream(bytes));
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-
-    private static void saveImage(BufferedImage image, String filePath) {
-        try {
-            ImageIO.write(image, "png", new File(filePath));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 }

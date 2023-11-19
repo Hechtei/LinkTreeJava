@@ -3,7 +3,6 @@ package de.dhbw.ravensburg.wp.mymoviedatabase.model;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.stereotype.Service;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,4 +25,17 @@ public class InstaPic {
     private byte[] pic;
 
 
+    public void setPic(byte[] pic) {
+        this.pic = pic;
+    }
+
+
+    public byte[] getPic() {
+        return pic;
+    }
+
+
+    public InstaPic(String link) {
+        this.link = link;
+    }
 }

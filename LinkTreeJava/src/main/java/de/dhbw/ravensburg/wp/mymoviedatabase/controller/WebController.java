@@ -7,7 +7,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 public interface WebController {
 
-    public String showForm();
+
+
+
+    public String showForm(Model model);
 
     @GetMapping(value = {"/login"})
     public String showLogin();
