@@ -3,17 +3,20 @@ package de.dhbw.ravensburg.wp.mymoviedatabase.controller;
 
 import de.dhbw.ravensburg.wp.mymoviedatabase.DTOs.InstaDTO;
 import de.dhbw.ravensburg.wp.mymoviedatabase.service.LinkTreeService;
+import de.dhbw.ravensburg.wp.mymoviedatabase.util.ImageUtil;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.awt.image.BufferedImage;
 import java.util.List;
 
-@RestController
-@RequestMapping()
+@Controller
+
 public class InstaControllerImpl implements InstaController {
 
 
@@ -38,7 +41,7 @@ public class InstaControllerImpl implements InstaController {
 
 
     @GetMapping(value = "/pics")
-   public String  getProduktBild(Model model){
+   public String  getImage(Model model){
         byte[] bild = linkTreeService.getPicById(1L).getPic();
         model.addAttribute("bild",bild);
         return "dashboard";

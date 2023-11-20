@@ -42,7 +42,7 @@ public class Tests {
 
         InstaPic instaPic1 = new InstaPic("link");
 
-        String absoultePath = "C:\\Users\\Hechtei\\IdeaProjects\\LinkTreeJava\\LinkTreeJava\\src\\main\\resources\\static\\instapics\\Dog.png";
+        String absoultePath = "C:\\Users\\hecht\\OneDrive\\Desktop\\LinkTreeJava\\LinkTreeJava\\src\\main\\resources\\static\\instapics\\panda.png";
 
         BufferedImage image = ImageUtil.loadImage(Path.of(absoultePath));
 
@@ -50,6 +50,15 @@ public class Tests {
 
         instaRepo.save(instaPic1);
 
+        InstaPic instaPic2 = new InstaPic("link");
+
+        String absoultePath2 = "C:\\Users\\hecht\\OneDrive\\Desktop\\LinkTreeJava\\LinkTreeJava\\src\\main\\resources\\static\\instapics\\img.png";
+
+        BufferedImage image2 = ImageUtil.loadImage(Path.of(absoultePath2));
+
+        instaPic2.setPic(ImageUtil.imageToByteArray(image2));
+
+        instaRepo.save(instaPic2);
 
 
 

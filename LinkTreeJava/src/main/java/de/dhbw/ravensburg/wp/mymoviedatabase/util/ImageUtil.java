@@ -12,14 +12,13 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 
 @Component
 @Slf4j
 public class ImageUtil {
 
-    public ImageUtil() {
-    }
 
     public static BufferedImage loadImage(Path filePath) {
         try {
@@ -71,5 +70,6 @@ public class ImageUtil {
         }
         return output;
     }
+
 
 }

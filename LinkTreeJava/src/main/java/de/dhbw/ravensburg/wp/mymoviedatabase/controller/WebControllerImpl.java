@@ -22,8 +22,6 @@ public class WebControllerImpl implements WebController{
 
     @GetMapping(value = {"/","index.html"})
     public String showForm(Model model) {
-
-
         return "index";
     }
     @GetMapping(value = {"/login"})
