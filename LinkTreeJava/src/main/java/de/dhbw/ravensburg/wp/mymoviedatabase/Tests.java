@@ -39,10 +39,10 @@ public class Tests {
 
     @EventListener(ApplicationReadyEvent.class)
     public void callController(){
+        String absoultePath = "C:\\Users\\hecht\\OneDrive\\Desktop\\LinkTreeJava\\LinkTreeJava\\src\\main\\resources\\static\\instapics\\panda.png";
 
         InstaPic instaPic1 = new InstaPic("link");
 
-        String absoultePath = "C:\\Users\\hecht\\OneDrive\\Desktop\\LinkTreeJava\\LinkTreeJava\\src\\main\\resources\\static\\instapics\\panda.png";
 
         BufferedImage image = ImageUtil.loadImage(Path.of(absoultePath));
 
@@ -60,7 +60,28 @@ public class Tests {
 
         instaRepo.save(instaPic2);
 
+        String absolutePath3 = "C:\\Users\\hecht\\OneDrive\\Desktop\\LinkTreeJava\\LinkTreeJava\\src\\main\\resources\\static\\instapics\\Pic3.png";
+        InstaPic instaPic3 = new InstaPic("link");
 
+
+        BufferedImage image3 = ImageUtil.loadImage(Path.of(absolutePath3));
+
+        instaPic3.setPic(ImageUtil.imageToByteArray(image3));
+
+        instaRepo.save(instaPic3);
+
+
+        String absolutePath4 = "C:\\Users\\hecht\\OneDrive\\Desktop\\LinkTreeJava\\LinkTreeJava\\src\\main\\resources\\static\\instapics\\pic4.png";
+
+
+        InstaPic instaPic4 = new InstaPic("link");
+
+
+        BufferedImage image4 = ImageUtil.loadImage(Path.of(absolutePath4));
+
+        instaPic4.setPic(ImageUtil.imageToByteArray(image4));
+
+        instaRepo.save(instaPic4);
 
 
     }

@@ -20,10 +20,15 @@ public class WebControllerImpl implements WebController{
         this.linkTreeService = linkTreeService;
     }
 
-    @GetMapping(value = {"/","index.html"})
+    @Override
     public String showForm(Model model) {
-        return "index";
+        return null;
     }
+
+    /*   @GetMapping(value = {"/","index.html"})
+        public String showForm(Model model) {
+            return "index";
+        } */
     @GetMapping(value = {"/login"})
     public String showLogin(){
         return "login";
