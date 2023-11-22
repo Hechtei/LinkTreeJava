@@ -4,14 +4,24 @@
     <title>Linktree</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 <body>
 
+<div th:fragment="picgrid">
+
 <h1>AdminPanel</h1>
 
-<!-- Das Bild als Base64-kodierte Data-URL einbinden -->
-<img th:src="@{'data:image/png;base64,' + #strings.bytes(#bild)}" th:alt="Produktbild" />
 
+
+<div class ="row ">
+    <div class="col-4" th:each="pic : ${data}">
+        <img th:src="@{'/images/' + ${pic.id}}" alt="Bild"  >
+    </div>
+</div>
+
+
+</div>
 </body>
+
 </html>

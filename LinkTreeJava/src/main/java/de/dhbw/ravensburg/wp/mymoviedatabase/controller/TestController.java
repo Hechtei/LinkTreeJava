@@ -5,12 +5,16 @@ import de.dhbw.ravensburg.wp.mymoviedatabase.service.LinkTreeService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import org.springframework.http.HttpHeaders;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -30,25 +34,42 @@ public class TestController {
         byte[] bild = linkTreeService.getPicById(id).getPic();
 
         HttpHeaders headers = new HttpHeaders();
-
         headers.setContentType(MediaType.IMAGE_PNG); // Ändere den Medientyp entsprechend
 
         return new ResponseEntity<>(bild, headers, HttpStatus.OK);
     }
+    @GetMapping("/")
+    public ModelAndView getImages() {
 
-    @GetMapping("/images")
-    public ResponseEntity<List<ResponseEntity<byte[]>>> getImages() {
-        List<InstaDTO> bilder = linkTreeService.getAllPic();
+        List<InstaDTO> pics = this.linkTreeService.getAllPic();
+        ModelAndView modelAndView = new ModelAndView("index");
+        modelAndView.addObject("data", pics);
+        return modelAndView;
+    }
 
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.IMAGE_PNG);
+    @PostMapping("/speichern")
+    public String addPicture(@RequestParam String link, @RequestParam("bild")MultipartFile pic){
 
-        // Erstellen Sie eine Liste von ResponseEntity-Objekten für jedes Bild
-        List<ResponseEntity<byte[]>> responseEntities = bilder.stream()
-                .map(bild -> new ResponseEntity<>(bild.getPic(), headers, HttpStatus.OK))
-                .collect(Collectors.toList());
+        if (!pic.isEmpty()) {
+            try {
+                byte[] bildBytes = pic.getBytes();
 
-        return new ResponseEntity<>(responseEntities, HttpStatus.OK);
+                // Bytes in ein BufferedImage umwandeln
+                //ByteArrayInputStream inputStream = new ByteArrayInputStream(bildBytes);
+                //BufferedImage bufferedImage = ImageIO.read(inputStream);
+                InstaDTO instaDTO = new InstaDTO();
+                instaDTO.setPic(bildBytes);
+                instaDTO.setLink(link);
+
+                linkTreeService.addPic(instaDTO);
+
+            } catch (IOException e) {
+                e.printStackTrace(); // Handle die Ausnahme entsprechend
+            }
+        }
+
+
+        return "redirect:/dashboard";
     }
 
 
