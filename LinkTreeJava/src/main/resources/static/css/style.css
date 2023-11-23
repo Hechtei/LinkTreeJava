@@ -183,8 +183,8 @@ body{
     }
 }
 .instaimg{
-    width: 500px;
-    height: 500px;
+    width: 1000px;
+    height: 1000px;
     transition: 0.5s;
     border: 5px solid white;
 
@@ -198,8 +198,6 @@ body{
 font-family: 'Schriftart';
 src: url("louis_george_cafe/Louis George Cafe Light.ttf");
 }
-
-
 
 
 

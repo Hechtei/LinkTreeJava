@@ -9,19 +9,11 @@
 <body>
 
 <div th:fragment="picgrid">
-
-<h1>AdminPanel</h1>
-
-
-
-<div class ="row ">
-    <div class="col-4" th:each="pic : ${data}">
-        <img th:src="@{'/images/' + ${pic.id}}" alt="Bild"  >
-    </div>
-</div>
-
-
+        <div class="row">
+            <div class="col-4 " th:each="pic : ${data}">
+                <img class="instaimg img-fluid" th:src="@{'/images/' + ${pic.id}}" alt="Bild" >
+            </div>
+        </div>
 </div>
 </body>
-
 </html>

@@ -11,7 +11,6 @@ public interface WebController {
 
 
     public String showForm(Model model);
-
     @GetMapping(value = {"/login"})
     public String showLogin();
     public String dashboard();
