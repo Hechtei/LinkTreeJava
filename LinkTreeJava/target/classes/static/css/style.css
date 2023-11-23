@@ -1,0 +1,203 @@
+:root {
+    --mofont: 'Montserrat', sans-serif;
+}
+
+h1{
+    font-family: var(--mofont);
+    font-weight: bold;
+    font-style: 700;
+    font-size: 150%;
+    color: white;
+    text-align: center;
+}
+
+body{
+    background-color: #00BFFF;
+    font-family: var(--mofont);
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: 5px solid #ffffff ;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+
+}
+
+.icon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+}
+
+.icon_insta {
+    width: 50px;
+    height: 50px;
+    position: relative;
+    overflow: visible;
+    padding: 10px;
+    margin: 5px;
+}
+
+.icon_linkedin {
+    width: 50px;
+    height: 50px;
+    position: relative;
+    overflow: visible;
+    padding: 10px;
+    margin: 5px;
+}
+
+.icon_facebook {
+    width: 50px;
+    height: 50px;
+    position: relative;
+    overflow: visible;
+    padding: 10px;
+    margin: 5px;
+}
+
+.icon_youtube {
+    width: 50px;
+    height: 50px;
+    position: relative;
+    overflow: visible;
+    padding: 10px;
+    margin: 5px;
+}
+
+.icon_insta::before {
+    content: url('../pics/InstragramIcon.png'); 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.3s ease;
+}
+
+.icon_linkedin::before {
+    content: url('../pics/LinkedInIcon.png'); 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.3s ease;
+}
+
+.icon_facebook::before {
+    content: url('../pics/FacebookIcon.png'); 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.3s ease;
+}
+
+.icon_youtube::before {
+    content: url('../pics/YoutubeIcon.png'); 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.3s ease;
+}
+
+.icon_insta:hover::before {
+    content: url('../pics/InstagramIconBlue.png'); 
+    transform: scale(1.2);
+}
+
+.icon_linkedin:hover::before {
+    content: url('../pics/LinkedInIconBlue.png'); 
+    transform: scale(1.2); 
+}
+
+.icon_facebook:hover::before {
+    content: url('../pics/FacebookIconBlue.png'); 
+    transform: scale(1.2); 
+}
+
+.icon_youtube:hover::before {
+    content: url('../pics/YoutubeIconBlue.png'); 
+    transform: scale(1.2); 
+}
+
+
+
+@keyframes tracking-in-expand {
+    0% {
+        letter-spacing: -0.5em;
+        opacity: 0;
+    }
+    40% {
+        opacity: 0.6;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.buttons-position{
+    display:grid;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+}
+
+.button{
+    width: 300px;
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid #fff; 
+    background-color: rgba(255, 255, 255, 0.3);
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    text-align: center;
+    border-radius: 8px;
+}
+
+.button:hover{
+    background-color: #0069B3;
+    color: #fff;
+}
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+.instaimg{
+    width: 1000px;
+    height: 1000px;
+    transition: 0.5s;
+    border: 5px solid white;
+
+}
+.instaimg:hover{
+    transform:  scale(1.1);
+    border: 5px solid white;
+}
+
+@font-face {
+font-family: 'Schriftart';
+src: url("louis_george_cafe/Louis George Cafe Light.ttf");
+}
+
+
+
