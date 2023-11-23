@@ -183,15 +183,12 @@ body{
     }
 }
 .instaimg{
-    width: 1000px;
-    height: 1000px;
-    transition: 0.5s;
-    border: 5px solid white;
-
+    transition: border 1s;
 }
+
 .instaimg:hover{
-    transform:  scale(1.1);
-    border: 5px solid white;
+    border: 3px solid #F0F0F0;
+
 }
 
 @font-face {
