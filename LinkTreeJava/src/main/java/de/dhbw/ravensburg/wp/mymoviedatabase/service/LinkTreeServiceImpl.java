@@ -46,6 +46,7 @@ public class LinkTreeServiceImpl implements LinkTreeService{
     public InstaDTO addPic(InstaDTO newPic) {
         InstaPic tmp = instaMapper.DTOtoInstaPic(newPic);
         return instaMapper.instaPicToDTO(instaRepo.save(tmp));
+
     }
 
     @Override

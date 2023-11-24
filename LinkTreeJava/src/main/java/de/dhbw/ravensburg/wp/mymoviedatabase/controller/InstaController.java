@@ -11,7 +11,7 @@ import java.util.List;
 
 @Controller
 public interface InstaController {
-
+/*
         List<InstaDTO> getAllPictures();
       //  InstaDTO getPictureById(Long id);
 
@@ -23,7 +23,7 @@ public interface InstaController {
         InstaDTO addPicture(InstaDTO instaDTO);
 
         void deletePicture(Long id);
-
+ */
 }
 
 

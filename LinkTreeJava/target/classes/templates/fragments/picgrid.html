@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de" xmlns:th="http://www.thymeleaf.org">
+<html lang="de" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <title>Linktree</title>
     <meta charset="UTF-8">
@@ -8,10 +8,10 @@
 </head>
 <body>
 
-<div th:fragment="picgrid">
-        <div class="row">
+<div th:fragment="picgrid" class="d-flex justify-content-center">
+        <div class="row g-1">
             <div class="col-4 " th:each="pic : ${data}">
-                <img class="instaimg img-fluid" th:src="@{'/images/' + ${pic.id}}" alt="Bild" >
+              <a href = "https://www.rentschler-biopharma.com/de/ "th:href="${pic.link}"> <img class="instaimg img-fluid" th:src="@{'/images/' + ${pic.id}}" alt="Bild" > </a>
             </div>
         </div>
 </div>

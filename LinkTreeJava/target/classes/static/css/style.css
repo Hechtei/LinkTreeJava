@@ -16,6 +16,7 @@ body{
     font-family: var(--mofont);
     justify-content: center;
     align-items: center;
+
 }
 
 .logo {
@@ -183,21 +184,18 @@ body{
     }
 }
 .instaimg{
-    width: 1000px;
-    height: 1000px;
-    transition: 0.5s;
-    border: 5px solid white;
-
+    transition: border 1s;
+    padding : 3px;
 }
+
 .instaimg:hover{
-    transform:  scale(1.1);
-    border: 5px solid white;
+    border: 3px solid #F0F0F0;
+
 }
 
 @font-face {
 font-family: 'Schriftart';
 src: url("louis_george_cafe/Louis George Cafe Light.ttf");
 }
-
 
 

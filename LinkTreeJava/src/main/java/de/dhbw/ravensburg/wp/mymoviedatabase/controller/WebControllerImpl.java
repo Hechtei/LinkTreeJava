@@ -17,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.io.IOException;
+import java.util.Collections;
 import java.util.List;
 
 @Controller
@@ -39,14 +40,12 @@ public class WebControllerImpl implements WebController {
         byte[] bild = linkTreeService.getPicById(id).getPic();
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.IMAGE_PNG);
-
         return new ResponseEntity<>(bild, headers, HttpStatus.OK);
     }
-
     @GetMapping("/")
-    public ModelAndView getImages() {
-
+    public ModelAndView getIndex() {
         List<InstaDTO> pics = this.linkTreeService.getAllPic();
+        Collections.reverse(pics);
         ModelAndView modelAndView = new ModelAndView("index");
         modelAndView.addObject("data", pics);
         return modelAndView;
@@ -54,19 +53,15 @@ public class WebControllerImpl implements WebController {
 
     @PostMapping("/speichern")
     public String addPicture(@RequestParam String link, @RequestParam("bild") MultipartFile pic) {
-
         if (!pic.isEmpty()) {
             try {
                 byte[] bildBytes = pic.getBytes();
-
                 InstaDTO instaDTO = new InstaDTO();
                 instaDTO.setPic(bildBytes);
                 instaDTO.setLink(link);
-
                 linkTreeService.addPic(instaDTO);
-
             } catch (IOException e) {
-                e.printStackTrace(); // Handle die Ausnahme entsprechend
+                e.printStackTrace();
             }
         }
         return "redirect:/dashboard";
